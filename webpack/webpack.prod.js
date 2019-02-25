@@ -5,9 +5,12 @@ const commonPaths = require('./paths');
 module.exports = {
   mode: 'production',
   output: {
-    filename: `${commonPaths.jsFolder}/[name].[hash].js`,
+    filename: `${commonPaths.jsFolder}/plugin.js`,
     path: commonPaths.outputPath,
-    chunkFilename: '[name].[chunkhash].js',
+    chunkFilename: 'plugin.js',
+  },
+  optimization: {
+    minimize: false,
   },
   module: {
     rules: [
@@ -34,8 +37,8 @@ module.exports = {
       root: commonPaths.root,
     }),
     new MiniCssExtractPlugin({
-      filename: `${commonPaths.cssFolder}/[name].css`,
-      chunkFilename: '[id].css',
+      filename: `${commonPaths.cssFolder}/plugin.css`,
+      chunkFilename: 'plugin.css',
     }),
   ],
   devtool: 'source-map',
