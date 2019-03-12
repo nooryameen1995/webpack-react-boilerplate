@@ -1,0 +1,23 @@
+import { observable, action, computed, autorun, configure } from 'mobx';
+
+configure({ enforceActions: 'observed' });
+
+class MainStore {
+  @observable birds = [];
+
+  @action
+  addBird = bird => {
+    this.birds.push(bird);
+  };
+
+  @computed
+  get birdCount() {
+    return this.birds.length;
+  }
+}
+
+const store = new MainStore();
+autorun(() => {
+  console.log(store.alarms);
+});
+export default store;

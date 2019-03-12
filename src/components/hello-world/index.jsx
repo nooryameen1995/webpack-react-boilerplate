@@ -1,13 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import style from './hello-world.css';
+import React, { Component } from 'react';
+import { inject, observer, PropTypes } from 'mobx-react';
 
-const HelloWorld = ({ title }) => (
-  <div className={style['hello-world']}>{title}</div>
-);
+@inject('BirdStore')
+@observer
+class HelloWorld extends Component {
+  render() {
+    const { BirdStore } = this.props;
 
+    return (
+      <div>
+        <h2>You have {BirdStore.birdCount} birds</h2>
+        <ul>
+          {BirdStore.birds.map(bird => (
+            <li key={bird}>{bird}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
 HelloWorld.propTypes = {
-  title: PropTypes.string,
+  BirdStore: PropTypes.observableArray,
 };
 
 export default HelloWorld;
