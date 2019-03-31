@@ -6,6 +6,13 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const commonPaths = require('./paths');
 
 module.exports = {
+  externals: {
+    //      lodash: '',
+    //    prop-types:'',
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    //      'react-hot-loader':'hot'
+  },
   entry: commonPaths.entryPath,
   module: {
     rules: [
@@ -61,6 +68,7 @@ module.exports = {
     modules: ['src', 'node_modules'],
     extensions: ['*', '.js', '.jsx', '.css', '.scss'],
   },
+
   plugins: [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({

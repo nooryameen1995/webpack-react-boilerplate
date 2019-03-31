@@ -8,6 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack",
     "format": "prettier --write 'packages/**/*.js'",
     "test": "jest --watchAll --coverage",
+    "watch": "npm run build && sudo cp /opt/stack/horizon-react/webpack-react-boilerplate/build/js/plugin.js /opt/stack/horizon/openstack_dashboard/dashboards/reactdashboard/static/reactdashboard/js/plugin.js && sudo /opt/stack/horizon/manage.py collectstatic --no-input && sudo service apache2 restart",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -53,7 +54,10 @@
     "prop-types": "15.6.2",
     "react": "16.7.0",
     "react-dom": "16.7.0",
-    "react-hot-loader": "4.6.3"
+    "react-hot-loader": "4.6.3",
+    "mobx": "latest",
+    "mobx-react": "latest",
+    "axios": "latest"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
